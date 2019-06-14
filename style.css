@@ -1,0 +1,23 @@
+body{
+       background-color: snow;
+}
+
+.cards
+{
+    width: 100%;
+    text-align: center;
+}
+#result{
+    color: red;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 85px 70px 85px 70px;
+
+    cursor: default;
+    border: blue solid blue;
+    background-color: white;
+    border-radius: 14%;
+}
