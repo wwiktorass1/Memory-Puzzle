@@ -2,11 +2,6 @@ body {
     background-color: snow;
 }
 
-.cards {
-    width: 100%;
-    text-align: center;
-}
-
 #result {
     color: red;
 }
