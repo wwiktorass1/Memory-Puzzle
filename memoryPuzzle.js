@@ -56,7 +56,7 @@ function openCard (index) {
         count = 1;
     }
 
-     document.getElementById("result").innerHTML = "<h2> Conjectured: " + guessNumber + "</h2>";
+     document.getElementById("result").innerHTML = "<h2> Guessed: " + guessNumber + "</h2>";
 
     let allInvertedCards = true;
     for (let i = 0; i < colors.length; i++) {
@@ -93,12 +93,11 @@ function randomizeCards() {
         colors[currentIndex] = colors[randomIndex];
         colors[randomIndex] = temporaryValue;
     }
-    document.getElementById("result").innerHTML = "<h2> Conjectured: " + 0 + "</h2>";
+    document.getElementById("result").innerHTML = "<h2> Guessed: " + 0 + "</h2>";
 }
 
 function setColorToWhite(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = "white";
 }
 
-
-document.getElementById("year").innerHTML = new Date().getFullYear() + " y.";
+document.getElementById("year").innerHTML = new Date().getFullYear();
