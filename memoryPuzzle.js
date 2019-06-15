@@ -1,7 +1,7 @@
-document.getElementById("projectName").innerHTML = "Card Game"
+document.getElementById("projectName").innerHTML = "<h1>Puzle card Game </h1>"
 
-let colors = ["yellow", "green", "red", "black", "yellow", "purple", "grey", "orange", "orange",
-"brown", "red", "brown", "grey", "purple", "green", "black"];
+let colors = ["yellow", "green", "red", "black", "purple", "blue", "orange", "yellow", "grey", "orange",
+"blue", "green", "purple", "grey", "black", "red"];
 
 let conjecture1Index;
 let conjecture2Index;
@@ -9,7 +9,7 @@ let findedCards = [];
 let count = 0;
 let conjecture1;
 let conjecture2;
-var numberOfConjecture = 1;
+let numberOfConjecture = 1;
 
 function setColorForButton(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = colors[index];
@@ -20,13 +20,11 @@ function card(index) {
     if (count == 0) {
         conjecture1 = colors[index];
         conjecture1Index = index;
-        console.log(conjecture1Index + " conjecture1Index");
         setColorForButton(index);
         count++;
     } else if (count == 1) {
         conjecture2 = colors[index];
         conjecture2Index = index;
-        console.log(conjecture2Index + " conjecture2Index");
         setColorForButton(index);
         count++;
     } else if (count == 2) {
@@ -48,13 +46,13 @@ function card(index) {
         conjecture2Index = null;
         conjecture2 = null;
 
+
     } else if ((conjecture1Index === conjecture2Index) && (conjecture1 !== null)) {
         conjecture2Index = null;
         conjecture2 = null;
         count = 1;
     }
-    console.log(numberOfConjecture + " numberOfConjecture bifore show")
-    document.getElementById("result").innerHTML = "Conjectured: " + numberOfConjecture++;
+    document.getElementById("result").innerHTML = "<h2> Conjectured: " + numberOfConjecture++ + "</h2>";
 
     let boolin = true;
     for (let i = 0; i < colors.length; i++) {
@@ -66,6 +64,7 @@ function card(index) {
 
     if (boolin === true) {
         alert("Your result is " + (numberOfConjecture - 1) + "!");
+        numberOfConjecture = 1;
         for (let i = 0; i < colors.length; i++) {
             setColorToWhite(i);
         }
@@ -73,34 +72,30 @@ function card(index) {
         conjecture2 = null;
         conjecture1Index = null;
         conjecture2Index = null;
-        numberOfconjecture = 1;
-        document.getElementById("result").innerHTML = "Conjectured: " + --numberOfConjecture;
-        console.log(numberOfconjecture + " numberOfconjecture 2")
         findedCards = [];
         randomizeCards();
-
     }
+}
+
+function randomizeCards() {
+    let currentIndex = colors.length;
+    let temporaryValue;
+    let randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        --currentIndex;
+        temporaryValue = colors[currentIndex];
+        colors[currentIndex] = colors[randomIndex];
+        colors[randomIndex] = temporaryValue;
+    }
+    document.getElementById("result").innerHTML = "<h2> Conjectured: " + 0 + "</h2>";
 }
 
 function setColorToWhite(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = "white";
 }
 
-function randomizeCards() {
-    let currentIndex = colors.length;
-    console.log(currentIndex + " currentIndex")
-    let temporaryValue;
-    let randomIndex;
 
-    while (currentIndex !== 0) {
-        console.log(currentIndex + " currentIndex not equal 0")
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        --currentIndex;
-        console.log(currentIndex + " currentIndex")
-        colors[currentIndex] = colors[randomIndex];
-        colors[randomIndex] = temporaryValue;
-        temporaryValue = colors[currentIndex];
-    }
-}
 
 document.getElementById("year").innerHTML = new Date().getFullYear() + " y.";
