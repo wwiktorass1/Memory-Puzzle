@@ -66,7 +66,6 @@ function openCard (index) {
         }
     }
 
-
     if (allInvertedCards === true) {
         alert("Your result is " + guessNumber + "!");
         guessNumber = 0;
