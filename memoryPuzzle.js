@@ -1,4 +1,4 @@
-document.getElementById("projectName").innerHTML = "<h1>Puzle card Game </h1>"
+document.getElementById("projectName").innerHTML = "<h1>Puzzle card Game </h1>"
 
 let colors = ["yellow", "green", "red", "black", "purple", "blue", "orange", "yellow", "grey", "orange",
 "blue", "green", "purple", "grey", "black", "red"];
@@ -9,7 +9,7 @@ let findedCards = [];
 let count = 0;
 let conjecture1;
 let conjecture2;
-let numberOfConjecture = 1;
+let numberOfConjecture = 0;
 
 function setColorForButton(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = colors[index];
@@ -22,11 +22,13 @@ function card(index) {
         conjecture1Index = index;
         setColorForButton(index);
         count++;
+        numberOfConjecture++;
     } else if (count == 1) {
         conjecture2 = colors[index];
         conjecture2Index = index;
         setColorForButton(index);
         count++;
+        numberOfConjecture++;
     } else if (count == 2) {
         setColorToWhite(conjecture1Index);
         setColorToWhite(conjecture2Index);
@@ -36,6 +38,7 @@ function card(index) {
         conjecture2Index = null;
         setColorForButton(index);
         count = 1;
+        numberOfConjecture++;
     }
 
     if ((conjecture1Index !== conjecture2Index) && (conjecture1 === conjecture2)) {
@@ -52,19 +55,21 @@ function card(index) {
         conjecture2 = null;
         count = 1;
     }
-    document.getElementById("result").innerHTML = "<h2> Conjectured: " + numberOfConjecture++ + "</h2>";
 
-    let boolin = true;
+     document.getElementById("result").innerHTML = "<h2> Conjectured: " + numberOfConjecture + "</h2>";
+
+    let overturnedAllCards = true;
     for (let i = 0; i < colors.length; i++) {
         if (!findedCards.includes(colors[i])) {
-            boolin = false;
+            overturnedAllCards = false;
             break;
         }
     }
 
-    if (boolin === true) {
-        alert("Your result is " + (numberOfConjecture - 1) + "!");
-        numberOfConjecture = 1;
+
+    if (overturnedAllCards === true) {
+        alert("Your result is " + numberOfConjecture + "!");
+        numberOfConjecture = 0;
         for (let i = 0; i < colors.length; i++) {
             setColorToWhite(i);
         }
