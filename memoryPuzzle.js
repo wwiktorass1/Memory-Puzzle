@@ -1,6 +1,6 @@
 document.getElementById("projectName").innerHTML = "<h1>Puzzle card Game </h1>"
 
-let colors = ["yellow", "green", "red", "black", "purple", "blue", "orange", "yellow", "grey", "orange",
+const colors = ["yellow", "green", "red", "black", "purple", "blue", "orange", "yellow", "grey", "orange",
 "blue", "green", "purple", "grey", "black", "red"];
 
 let conjecture1Index;
