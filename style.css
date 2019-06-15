@@ -1,13 +1,13 @@
-body{
-       background-color: snow;
+body {
+    background-color: snow;
 }
 
-.cards
-{
+.cards {
     width: 100%;
     text-align: center;
 }
-#result{
+
+#result {
     color: red;
 }
 
@@ -17,7 +17,7 @@ body{
     padding: 85px 70px 85px 70px;
 
     cursor: default;
-    border: blue solid blue;
+    border: 2px solid rgb(139,69,19);
     background-color: white;
     border-radius: 14%;
 }
