@@ -9,26 +9,26 @@ let findedCards = [];
 let count = 0;
 let conjecture1;
 let conjecture2;
-let numberOfConjecture = 0;
+let guessNumber = 0;
 
 function setColorForButton(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = colors[index];
 }
 
 
-function card(index) {
+function openCard (index) {
     if (count == 0) {
         conjecture1 = colors[index];
         conjecture1Index = index;
         setColorForButton(index);
         count++;
-        numberOfConjecture++;
+        ++guessNumber;
     } else if (count == 1) {
         conjecture2 = colors[index];
         conjecture2Index = index;
         setColorForButton(index);
         count++;
-        numberOfConjecture++;
+        ++guessNumber;
     } else if (count == 2) {
         setColorToWhite(conjecture1Index);
         setColorToWhite(conjecture2Index);
@@ -38,7 +38,7 @@ function card(index) {
         conjecture2Index = null;
         setColorForButton(index);
         count = 1;
-        numberOfConjecture++;
+        ++guessNumber;
     }
 
     if ((conjecture1Index !== conjecture2Index) && (conjecture1 === conjecture2)) {
@@ -56,20 +56,20 @@ function card(index) {
         count = 1;
     }
 
-     document.getElementById("result").innerHTML = "<h2> Conjectured: " + numberOfConjecture + "</h2>";
+     document.getElementById("result").innerHTML = "<h2> Conjectured: " + guessNumber + "</h2>";
 
-    let overturnedAllCards = true;
+    let allInvertedCards = true;
     for (let i = 0; i < colors.length; i++) {
         if (!findedCards.includes(colors[i])) {
-            overturnedAllCards = false;
+            allInvertedCards = false;
             break;
         }
     }
 
 
-    if (overturnedAllCards === true) {
-        alert("Your result is " + numberOfConjecture + "!");
-        numberOfConjecture = 0;
+    if (allInvertedCards === true) {
+        alert("Your result is " + guessNumber + "!");
+        guessNumber = 0;
         for (let i = 0; i < colors.length; i++) {
             setColorToWhite(i);
         }
@@ -100,7 +100,6 @@ function randomizeCards() {
 function setColorToWhite(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = "white";
 }
-
 
 
 document.getElementById("year").innerHTML = new Date().getFullYear() + " y.";
