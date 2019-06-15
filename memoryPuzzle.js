@@ -3,12 +3,12 @@ document.getElementById("projectName").innerHTML = "<h1>Puzzle card Game </h1>"
 const colors = ["yellow", "green", "red", "black", "purple", "blue", "orange", "yellow", "grey", "orange",
 "blue", "green", "purple", "grey", "black", "red"];
 
-let conjecture1Index;
-let conjecture2Index;
+let guess1Index;
+let guess2Index;
 let findedCards = [];
 let count = 0;
-let conjecture1;
-let conjecture2;
+let guess1;
+let guess2;
 let guessNumber = 0;
 
 function setColorForButton(index) {
@@ -18,41 +18,41 @@ function setColorForButton(index) {
 
 function openCard (index) {
     if (count == 0) {
-        conjecture1 = colors[index];
-        conjecture1Index = index;
+        guess1 = colors[index];
+        guess1Index = index;
         setColorForButton(index);
         count++;
         ++guessNumber;
     } else if (count == 1) {
-        conjecture2 = colors[index];
-        conjecture2Index = index;
+        guess2 = colors[index];
+        guess2Index = index;
         setColorForButton(index);
         count++;
         ++guessNumber;
     } else if (count == 2) {
-        setColorToWhite(conjecture1Index);
-        setColorToWhite(conjecture2Index);
-        conjecture1 = colors[index];
-        conjecture1Index = index;
-        conjecture2 = null;
-        conjecture2Index = null;
+        setColorToWhite(guess1Index);
+        setColorToWhite(guess2Index);
+        guess1 = colors[index];
+        guess1Index = index;
+        guess2 = null;
+        guess2Index = null;
         setColorForButton(index);
         count = 1;
         ++guessNumber;
     }
 
-    if ((conjecture1Index !== conjecture2Index) && (conjecture1 === conjecture2)) {
+    if ((guess1Index !== guess2Index) && (guess1 === guess2)) {
         count = 0;
-        findedCards.push(conjecture1);
-        conjecture1Index = null;
-        conjecture1 = null;
-        conjecture2Index = null;
-        conjecture2 = null;
+        findedCards.push(guess1);
+        guess1Index = null;
+        guess1 = null;
+        guess2Index = null;
+        guess2 = null;
 
 
-    } else if ((conjecture1Index === conjecture2Index) && (conjecture1 !== null)) {
-        conjecture2Index = null;
-        conjecture2 = null;
+    } else if ((guess1Index === guess2Index) && (guess1 !== null)) {
+        guess2Index = null;
+        guess2 = null;
         count = 1;
     }
 
@@ -72,10 +72,10 @@ function openCard (index) {
         for (let i = 0; i < colors.length; i++) {
             setColorToWhite(i);
         }
-        conjecture1 = null;
-        conjecture2 = null;
-        conjecture1Index = null;
-        conjecture2Index = null;
+        guess1 = null;
+        guess2 = null;
+        guess1Index = null;
+        guess2Index = null;
         findedCards = [];
         randomizeCards();
     }
@@ -99,5 +99,6 @@ function randomizeCards() {
 function setColorToWhite(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = "white";
 }
+
 
 document.getElementById("year").innerHTML = new Date().getFullYear();
