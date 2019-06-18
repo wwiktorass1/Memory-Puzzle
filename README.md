@@ -3,4 +3,4 @@
 <br>
 Implemented using only front end technologies (HTML, CSS and JavaScript).
 
-![alt text(https://ibb.co/KyHFxLR)
+Site view:  https://ibb.co/KyHFxLR
