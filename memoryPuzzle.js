@@ -1,4 +1,6 @@
 document.getElementById("projectName").innerHTML = "<h1>Puzzle card Game </h1>"
+document.querySelector("#projectName").innerHTML = "<h1>Puzzle card Game </h1>"
+
 
 const colors = ["yellow", "green", "red", "black", "purple", "blue", "orange", "yellow", "grey", "orange",
 "blue", "green", "purple", "grey", "black", "red"];
@@ -13,32 +15,38 @@ let guessNumber = 0;
 
 function setColorForButton(index) {
     document.getElementsByClassName("button")[index].style.backgroundColor = colors[index];
+
 }
 
 
-function openCard (index) {
-    if (count == 0) {
-        guess1 = colors[index];
-        guess1Index = index;
-        setColorForButton(index);
-        count++;
-        ++guessNumber;
-    } else if (count == 1) {
-        guess2 = colors[index];
-        guess2Index = index;
-        setColorForButton(index);
-        count++;
-        ++guessNumber;
-    } else if (count == 2) {
-        setColorToWhite(guess1Index);
-        setColorToWhite(guess2Index);
-        guess1 = colors[index];
-        guess1Index = index;
-        guess2 = null;
-        guess2Index = null;
-        setColorForButton(index);
-        count = 1;
-        ++guessNumber;
+function openCard(index) {
+    console.log(count + " count")
+    switch (count) {
+        case 0:
+            guess1 = colors[index];
+            guess1Index = index;
+            setColorForButton(index);
+            count++;
+            ++guessNumber;
+            break;
+        case 1:
+            guess2 = colors[index];
+            guess2Index = index;
+            setColorForButton(index);
+            count++;
+            ++guessNumber;
+            break;
+        case 2:
+            setColorToWhite(guess1Index);
+            setColorToWhite(guess2Index);
+            guess1 = colors[index];
+            guess1Index = index;
+            guess2 = null;
+            guess2Index = null;
+            setColorForButton(index);
+            count = 1;
+            ++guessNumber;
+            break;
     }
 
     if ((guess1Index !== guess2Index) && (guess1 === guess2)) {
@@ -56,7 +64,7 @@ function openCard (index) {
         count = 1;
     }
 
-     document.getElementById("result").innerHTML = "<h2> Guessed: " + guessNumber + "</h2>";
+    document.querySelector("#result").innerHTML = "<h2> Guessed: " + guessNumber + "</h2>";
 
     let allInvertedCards = true;
     for (let i = 0; i < colors.length; i++) {
@@ -93,7 +101,7 @@ function randomizeCards() {
         colors[currentIndex] = colors[randomIndex];
         colors[randomIndex] = temporaryValue;
     }
-    document.getElementById("result").innerHTML = "<h2> Guessed: " + 0 + "</h2>";
+    document.querySelector("#result").innerHTML = "<h2> Guessed: " + 0 + "</h2>";
 }
 
 function setColorToWhite(index) {
@@ -101,4 +109,4 @@ function setColorToWhite(index) {
 }
 
 
-document.getElementById("year").innerHTML = new Date().getFullYear();
+document.querySelector("#year").innerHTML = new Date().getFullYear();
